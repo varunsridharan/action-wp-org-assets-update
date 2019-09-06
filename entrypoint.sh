@@ -102,8 +102,7 @@ rsync -r --delete --exclude-from="$GITHUB_WORKSPACE/$ASSETS_IGNORE_FILE" "./" "$
 cd "$SVN_DIR"
 
 # Copy from clean copy to /trunk, excluding dotorg assets
-# The --delete flag will delete anything in destination that no longer exists in source
-rsync -rc "$TMP_DIR/" trunk/ --delete
+rsync -c "$TMP_DIR/readme.txt" "trunk/"
 
 # Copy dotorg assets to /assets
 rsync -rc "$ASSET_TMP_DIR/" assets/ --delete
@@ -118,12 +117,6 @@ svn status
 if [[ -z $(svn stat) ]]; then
 	echo "🛑 Nothing to deploy!"
 	exit 0
-# Check if there is more than just the readme.txt modified in trunk
-# The leading whitespace in the pattern is important
-# so it doesn't match potential readme.txt in subdirectories!
-elif svn stat trunk | grep -qvi ' trunk/readme.txt$'; then
-	echo "🛑 Other files have been modified; changes not deployed"
-	exit 1
 fi
 
 # Readme also has to be updated in the .org tag
