@@ -1,4 +1,4 @@
-name: 'WordPress Org Deploy'
+name: 'WordPress Org Assets / Readme Updater'
 description: 'Github Action Pushes WordPress.org Plugins Update'
 author: 'varunsridharan'
 branding:
