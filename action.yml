@@ -17,8 +17,8 @@ inputs:
   ASSETS_DIR:
     description: 'Plugin Assets Dir For WordPress.org'
     default: '.wordpress-org'
-  IGNORE_FILE:
-    description: 'WordPress.org Exclude List File'
+  README_NAME:
+    description: 'Readme File location'
     default: '.wporgignore'
   ASSETS_IGNORE_FILE:
     description: 'WordPress.org Assets Exclude List File'
@@ -32,6 +32,5 @@ runs:
     - ${{ inputs.WORDPRESS_USERNAME }}
     - ${{ inputs.WORDPRESS_PASSWORD }}
     - ${{ inputs.SLUG }}
-    - ${{ inputs.ASSETS_DIR }}
-    - ${{ inputs.IGNORE_FILE }}
+    - ${{ inputs.README_NAME }}
     - ${{ inputs.ASSETS_IGNORE_FILE }}
